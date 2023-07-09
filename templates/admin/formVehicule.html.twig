@@ -1,0 +1,64 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {% if editMode %}
+    Modifier Vehicule
+        {% else %}
+            Ajouter Vehicule
+            
+    {% endif %}
+
+{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-4">
+    {% if editMode %}
+    Modifier Vehicule
+        {% else %}
+            Ajouter Vehicule
+            
+    {% endif %}
+    </h1>
+
+    <div class="container">
+        {{ form_start(form,{
+            attr: {
+                novalidate: 'novalidate'
+            }
+        }) }}
+        
+            {{ form_row(form.titre, {
+                label: 'Titre',
+                attr: {
+                    placeholder: "Titre du vehicule"
+                }
+            }) }}
+
+            {{ form_row(form.marque, {
+                label: 'Marque'
+            }) }}
+
+            {{ form_row(form.modele, {
+                label: 'Modèle'
+            }) }}
+
+            {{ form_row(form.photo) }}
+
+            {{ form_row(form.description,{
+                label: 'Description'
+            }) }}
+
+            {{ form_row(form.prix_journalier,{
+                label: 'Prix Journalier'
+            }) }}
+
+
+
+
+            <button type="submit" class="btn btn-primary">Envoyez</button>
+
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

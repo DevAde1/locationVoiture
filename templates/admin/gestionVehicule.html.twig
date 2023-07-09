@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Gestion Vehicule{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-4">Gestion des vehicules</h1>
+
+
+    <div class="container">
+    <a href="{{ path('admin_vehicule_new') }}" class="btn btn-primary my-2"> New Vehicule</a>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Titre</th>
+                    <th>Marque</th>
+                    <th>Modèle</th>
+                    <th>Photo</th>
+                    <th>Decription</th>
+                    <th>Prix Journalier</th>
+                    <th>Date d'enregistrement</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vehicule in vehicules %}
+                    <tr>
+                        <td>{{ vehicule.idvehicule }}</td>
+                        <td>{{ vehicule.titre }}</td>
+                        <td>{{ vehicule.marque }}</td>
+                        <td>{{ vehicule.modele }}</td>
+                        <td><img src="{{ vehicule.photo }}" alt="" width="50"></td>
+                        <td>{{ vehicule.description }}</td>
+                        <td>{{ vehicule.prixjournalier }}</td>
+                        <td>{{ vehicule.dateenregistrement|date('d/m/y à H:i:s') }}</td>
+                        <td>
+                            <a href="{{ path('admin_vehicule_update', {id: vehicule.idvehicule}) }}" class="text-warning">edit</a>
+                            <a href="{{ path('admin_vehicule_delete', {id: vehicule.idvehicule}) }}" class="text-danger">delete</a>
+                        </td>
+                    </tr>
+                    
+                {% endfor %}
+            </tbody>
+        
+        </table>
+    
+    
+    </div>
+{% endblock %}

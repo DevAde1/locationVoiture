@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vehicules{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-4">Les Vehicules</h1>
+<div class="container">
+    <section class="row gx-2">
+        {% for item in vehicules %}
+            <div class="col-md-3 my-3">
+                <div class="card p-2">
+                    <img src="{{ item.photo }}" alt="Photo de Voiture" class="img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.titre }}</h5>
+                        <h6 class="card-title">{{ item.marque }}</h6>
+                        <h6 class="card-title">{{ item.modele }}</h6>
+                        <p class="card-text">{{ item.description|slice(0, 50) }}</p>
+                        <p class="card-text">{{ item.prixjournalier }}€ par jour.</p>
+                        {# <div class="text-center">
+                            <a href="{{ path('article_show', {id: item.id}) }}" class="btn btn-primary">Reserver et Payer</a>
+                        </div> #}
+                    </div>
+                </div>
+            </div>
+
+            
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}
